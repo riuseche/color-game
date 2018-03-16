@@ -4,13 +4,53 @@ var pickedColor = randomPickedColor();
 var goalColor = document.getElementById('goalColor');
 var topMessage = document.getElementById('topMessage');
 var gameHead = document.querySelector('#gameHead');
+var resetButton = document.querySelector('#resetButton');
+var easyButton = document.getElementById('easyButton');
+var hardButton = document.getElementById('hardButton');
+
+easyButton.addEventListener('click', function(){
+  colors = randomColorGenerator(3);
+  pickedColor = randomPickedColor();
+  // Change display color to match pickedColor
+  goalColor.textContent = pickedColor;
+  // Change square colors
+  for(var i = 0; i < squares.length; i++){
+    squares[i].style.backgroundColor = colors[i];
+  }
+  gameHead.style.backgroundColor = '#232323';
+})
+
+hardButton.addEventListener('click', function(){
+  colors = randomColorGenerator(6);
+  pickedColor = randomPickedColor();
+  // Change display color to match pickedColor
+  goalColor.textContent = pickedColor;
+  // Change square colors
+  for(var i = 0; i < squares.length; i++){
+    squares[i].style.backgroundColor = colors[i];
+  }
+  gameHead.style.backgroundColor = '#232323';
+})
+
+resetButton.addEventListener('click', function(){
+  // Create new Colors
+  colors = randomColorGenerator(6);
+  // Assign new Colors
+  pickedColor = randomPickedColor();
+  // Change display color to match pickedColor
+  goalColor.textContent = pickedColor;
+  // Change square colors
+  for(var i = 0; i < squares.length; i++){
+    squares[i].style.backgroundColor = colors[i];
+  }
+  gameHead.style.backgroundColor = '#232323';
+})
 
 goalColor.textContent = pickedColor;
 
 for(var i = 0; i < squares.length; i++){
   // Initial colors added to squares.
   squares[i].style.backgroundColor = colors[i];
-
   // Adding click listeners to squares.
   squares[i].addEventListener('click', function(){
     // Determine the color of clicked square.
@@ -18,6 +58,7 @@ for(var i = 0; i < squares.length; i++){
     // Comparec clicked color
     if(clickedColor === pickedColor){
       topMessage.textContent = 'You guessed right!';
+      resetButton.textContent = 'Play Again?'
       changeColors(clickedColor);
     } else {
       this.style.backgroundColor = '#232323';
