@@ -7,8 +7,10 @@ var colors = [
   'rgb(0, 255, 255)',
 ]
 var squares = document.getElementsByClassName('square')
-var pickedColor = colors[3];
+var pickedColor = randomPickedColor();
 var goalColor = document.getElementById('goalColor');
+var topMessage = document.getElementById('topMessage');
+var gameHead = document.querySelector('#gameHead');
 
 goalColor.textContent = pickedColor;
 
@@ -22,9 +24,25 @@ for(var i = 0; i < squares.length; i++){
     var clickedColor = this.style.backgroundColor;
     // Comparec clicked color
     if(clickedColor === pickedColor){
-      alert('Correct');
+      topMessage.textContent = 'You guessed right!';
+      changeColors(clickedColor);
     } else {
-      alert('wrong');
+      this.style.backgroundColor = '#232323';
+      topMessage.textContent = 'Try Again!';
     }
   });
+}
+
+function changeColors(color){
+  // loop through all the squares.
+  for(var i = 0; i < squares.length; i++){
+    squares[i].style.backgroundColor = color;
+  }
+  gameHead.style.backgroundColor = color;
+}
+
+function randomPickedColor(){
+  // Pick a random color
+  var random = Math.floor(Math.random() * colors.length);
+  return colors[random];
 }
