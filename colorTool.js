@@ -17,7 +17,8 @@ easyButton.addEventListener('click', function(){
   for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
   }
-  gameHead.style.backgroundColor = '#232323';
+  this.classList.add('selected');
+  hardButton.classList.remove('selected');
 })
 
 hardButton.addEventListener('click', function(){
@@ -29,7 +30,8 @@ hardButton.addEventListener('click', function(){
   for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
   }
-  gameHead.style.backgroundColor = '#232323';
+  this.classList.add('selected');
+  easyButton.classList.remove('selected');
 })
 
 resetButton.addEventListener('click', function(){
