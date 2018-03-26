@@ -1,4 +1,5 @@
-var colors = randomColorGenerator(6);
+var numOfSquares = 6;
+var colors = randomColorGenerator(numOfSquares);
 var squares = document.getElementsByClassName('square')
 var pickedColor = randomPickedColor();
 var goalColor = document.getElementById('goalColor');
@@ -9,26 +10,33 @@ var easyButton = document.getElementById('easyButton');
 var hardButton = document.getElementById('hardButton');
 
 easyButton.addEventListener('click', function(){
-  colors = randomColorGenerator(3);
+  numOfSquares = 3;
+  colors = randomColorGenerator(numOfSquares);
   pickedColor = randomPickedColor();
   // Change display color to match pickedColor
   goalColor.textContent = pickedColor;
   // Change square colors
   for(var i = 0; i < squares.length; i++){
-    squares[i].style.backgroundColor = colors[i];
+    if(colors[i]) {
+      squares[i].style.backgroundColor = colors[i];
+    } else {
+      squares[i].style.display = 'none';
+    }
   }
   this.classList.add('selected');
   hardButton.classList.remove('selected');
 })
 
 hardButton.addEventListener('click', function(){
-  colors = randomColorGenerator(6);
+  numOfSquares = 6;
+  colors = randomColorGenerator(numOfSquares);
   pickedColor = randomPickedColor();
   // Change display color to match pickedColor
   goalColor.textContent = pickedColor;
   // Change square colors
   for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
+    squares[i].style.display = 'block';
   }
   this.classList.add('selected');
   easyButton.classList.remove('selected');
@@ -36,7 +44,7 @@ hardButton.addEventListener('click', function(){
 
 resetButton.addEventListener('click', function(){
   // Create new Colors
-  colors = randomColorGenerator(6);
+  colors = randomColorGenerator(numOfSquares);
   // Assign new Colors
   pickedColor = randomPickedColor();
   // Change display color to match pickedColor
@@ -45,7 +53,8 @@ resetButton.addEventListener('click', function(){
   for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
   }
-  gameHead.style.backgroundColor = '#232323';
+  gameHead.style.backgroundColor = 'steelblue';
+  topMessage.style.display = 'none';
 })
 
 goalColor.textContent = pickedColor;
@@ -68,6 +77,7 @@ for(var i = 0; i < squares.length; i++){
     }
   });
 }
+
 
 function changeColors(color){
   // loop through all the squares.
