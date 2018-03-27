@@ -1,4 +1,5 @@
-var colors = randomColorGenerator(6);
+var numButtons = 6
+var colors = randomColorGenerator(numButtons);
 var squares = document.getElementsByClassName('square')
 var pickedColor = randomPickedColor();
 var goalColor = document.getElementById('goalColor');
@@ -9,41 +10,52 @@ var easyButton = document.getElementById('easyButton');
 var hardButton = document.getElementById('hardButton');
 
 easyButton.addEventListener('click', function(){
-  colors = randomColorGenerator(3);
+  numButtons = 3
+  colors = randomColorGenerator(numButtons);
   pickedColor = randomPickedColor();
   // Change display color to match pickedColor
   goalColor.textContent = pickedColor;
   // Change square colors
   for(var i = 0; i < squares.length; i++){
-    squares[i].style.backgroundColor = colors[i];
+    if (colors[i]){
+      squares[i].style.backgroundColor = colors[i];
+    } else {
+      squares[i].style.display = 'none';
+    }
   }
-  gameHead.style.backgroundColor = '#232323';
+  gameHead.style.backgroundColor = 'rgb(1, 1, 1)';
+  this.classList.add('selected')
+  hardButton.classList.remove('selected')
 })
 
 hardButton.addEventListener('click', function(){
-  colors = randomColorGenerator(6);
+  numButtons = 6
+  colors = randomColorGenerator(numButtons);
   pickedColor = randomPickedColor();
   // Change display color to match pickedColor
   goalColor.textContent = pickedColor;
   // Change square colors
   for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
+    squares[i].style.display = 'block'
   }
-  gameHead.style.backgroundColor = '#232323';
+  gameHead.style.backgroundColor = 'rgb(1, 1, 1)';
+  this.classList.add('selected')
+  easyButton.classList.remove('selected')
 })
 
 resetButton.addEventListener('click', function(){
-  // Create new Colors
-  colors = randomColorGenerator(6);
+  colors = randomColorGenerator(numButtons);
   // Assign new Colors
   pickedColor = randomPickedColor();
   // Change display color to match pickedColor
   goalColor.textContent = pickedColor;
+  topMessage.textContent = '';
   // Change square colors
   for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
   }
-  gameHead.style.backgroundColor = '#232323';
+  gameHead.style.backgroundColor = 'rgb(1, 1, 1)';
 })
 
 goalColor.textContent = pickedColor;
@@ -57,7 +69,7 @@ for(var i = 0; i < squares.length; i++){
     var clickedColor = this.style.backgroundColor;
     // Comparec clicked color
     if(clickedColor === pickedColor){
-      topMessage.textContent = 'You guessed right!';
+      topMessage.textContent = 'Correct!';
       resetButton.textContent = 'Play Again?'
       changeColors(clickedColor);
     } else {
