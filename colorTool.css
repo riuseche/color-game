@@ -1,5 +1,7 @@
 body {
-  background-color: #232323
+  background-color: #232323;
+  margin: 0;
+  font-family: "Montserrat",sans-serif, "Avenir", sans-serif;
 }
 
 .square {
@@ -17,10 +19,22 @@ body {
 
 h1 {
   color: white;
+  background-color: rgb(1, 1, 1);
+  margin: 0;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+  padding: 20px 0;
 }
 
 #topMessage {
   background-color: white;
+  display: inline-block;
+  width: 20%;
+  font-family: "Montserrat",sans-serif, "Avenir", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 #stripe {
@@ -29,6 +43,33 @@ h1 {
   text-align: center;
 }
 
+#goalColor {
+  font-size: 200%;
+}
+
 .selected {
-  background-color: blue;
+  background-color: rgb(1, 1, 1);
+  color: white;
+}
+
+button {
+  border: none;
+  margin: 0;
+  background-color: inherit;
+  text-transform: uppercase;
+  height: 100%;
+  font-weight: 700;
+  color: rgb(1, 1, 1);
+  letter-spacing: 1px;
+  font-size: inherit;
+  transition: all 0.5s;
+}
+
+button:hover {
+  color: white;
+  background-color: rgb(1, 1, 1);
+}
+
+button:focus {
+  outline: none;
 }
