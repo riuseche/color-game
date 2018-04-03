@@ -1,6 +1,6 @@
 # The Color Game
 
-TCG is a guessing game to test your RGB skills. The game will initite showing *6 squares* and a hit on the top, showing the current color you must find.
+TCG is a guessing game to test your RGB skills. The game will initiate showing *6 squares* and a hit on the top, showing the current color you must find.
 
 ## Red, Green, Blue color model
  
