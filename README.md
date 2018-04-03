@@ -11,7 +11,9 @@ TCG is a guessing game to test your RGB skills. The game will initiate showing *
  <li>rgb(0, 255, 0): Represents no red, all green, no blue</li>
  <li>rgb(0, 0, 255): Represents no red, no green, all blue</li>
  <br>
-Any other color is a combination of these values.  [This is rgb(83, 244, 66).](https://convertingcolors.com/rgb-color-83_244_66.html)
+ 
+Any other color is simply a combination of these values.
+
  
 ### Black and White
 
